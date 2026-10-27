@@ -25,6 +25,12 @@ public class ProductappApplicationTests {
             // 2. Consulter tous les produits
             System.out.println("=== Tous les produits ===");
             productRepository.findAll().forEach(System.out::println);
+            // 3. Consulter un produit
+            System.out.println("=== Produit id=1 ===");
+            Product p = productRepository.findById(1L).orElse(null);
+            if (p != null) {
+                System.out.println(p);
+            }
         };
     }
 }
