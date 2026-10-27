@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import java.util.List;
 
 @SpringBootApplication
 public class ProductappApplicationTests {
@@ -30,6 +31,13 @@ public class ProductappApplicationTests {
             Product p = productRepository.findById(1L).orElse(null);
             if (p != null) {
                 System.out.println(p);
+                // 4. Chercher des produits
+                System.out.println("=== Recherche par nom contenant 'o' ===");
+                List<Product> byName = productRepository.findByNameContainsIgnoreCase("o");
+                byName.forEach(System.out::println);
+
+                System.out.println("=== Prix > 1000 ===");
+                productRepository.findByPriceGreaterThan(1000).forEach(System.out::println);
             }
         };
     }
