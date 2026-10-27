@@ -138,7 +138,7 @@ Les opérations sont exécutées au démarrage dans `ProductappApplication` grâ
 | Supprimer un produit | `deleteById(id)` |
 
 
-![Résultat dans la console](docs/console.png)
+![Résultat dans la console](spring_run.png)
 
 ## Auteur
 
