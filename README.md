@@ -137,6 +137,9 @@ Les opérations sont exécutées au démarrage dans `ProductappApplication` grâ
 | Mettre à jour un produit | `save(product)` sur un produit existant |
 | Supprimer un produit | `deleteById(id)` |
 
+
+![Résultat dans la console](docs/console.png)
+
 ## Auteur
 
 **Oussama Boustane**, Université Mundiapolis
