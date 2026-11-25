@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductappApplicationTests {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductappApplication.class, args);
+        SpringApplication.run(ProductappApplicationTests.class, args);
     }
 
     @Bean
@@ -23,14 +23,17 @@ public class ProductappApplicationTests {
             productRepository.save(Product.builder().name("Imprimante").price(1500).quantity(5).build());
             productRepository.save(Product.builder().name("Souris").price(120).quantity(50).build());
             System.out.println("=== Produits ajoutés ===");
+
             // 2. Consulter tous les produits
             System.out.println("=== Tous les produits ===");
             productRepository.findAll().forEach(System.out::println);
+
             // 3. Consulter un produit
             System.out.println("=== Produit id=1 ===");
             Product p = productRepository.findById(1L).orElse(null);
             if (p != null) {
                 System.out.println(p);
+
                 // 4. Chercher des produits
                 System.out.println("=== Recherche par nom contenant 'o' ===");
                 List<Product> byName = productRepository.findByNameContainsIgnoreCase("o");
@@ -38,18 +41,18 @@ public class ProductappApplicationTests {
 
                 System.out.println("=== Prix > 1000 ===");
                 productRepository.findByPriceGreaterThan(1000).forEach(System.out::println);
+
                 // 5. Mettre à jour un produit
-                if (p != null) {
-                    p.setPrice(7500);
-                    p.setQuantity(8);
-                    productRepository.save(p);
-                    System.out.println("=== Après mise à jour ===");
-                    System.out.println(productRepository.findById(1L).orElse(null));
-                    // 6. Supprimer un produit
-                    productRepository.deleteById(2L);
-                    System.out.println("=== Après suppression de id=2 ===");
-                    productRepository.findAll().forEach(System.out::println);
-                }
+                p.setPrice(7500);
+                p.setQuantity(8);
+                productRepository.save(p);
+                System.out.println("=== Après mise à jour ===");
+                System.out.println(productRepository.findById(1L).orElse(null));
+
+                // 6. Supprimer un produit
+                productRepository.deleteById(2L);
+                System.out.println("=== Après suppression de id=2 ===");
+                productRepository.findAll().forEach(System.out::println);
             }
         };
     }
